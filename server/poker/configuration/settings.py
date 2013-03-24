@@ -1,4 +1,4 @@
-# Django settings for poker project.
+# Django settings for configuration project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -102,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'poker.urls'
+ROOT_URLCONF = 'configuration.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'poker.wsgi.application'
+WSGI_APPLICATION = 'configuration.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
