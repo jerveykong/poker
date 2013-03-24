@@ -7,3 +7,4 @@ apt-get install python-pip
 easy_install -U distrubute
 pip install MySQL-python
 pip install django
+pip install djangorestframework
