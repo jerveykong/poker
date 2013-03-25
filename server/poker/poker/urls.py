@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, url
 
-from echo import views
+from poker import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^getUser/$', views.getUser, name='getUser')
+    url(r'^lobby/$', views.index, name='index')
 )
