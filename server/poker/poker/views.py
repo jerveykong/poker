@@ -3,11 +3,10 @@ import poker.lobby.Lobby
 
 def index(request):
     lobby = poker.lobby.Lobby.Lobby()
+    users = lobby.loadLobby()
     users = lobby.getUsers()
-    print users
+    print "users are " + str(users)
     results = ""
-    for key,value in users:
-        print x
-        #results += str(value) + " ";
+    for x in users:
+        results += str(x.username) + " ";
     return HttpResponse("Hello, world." + results)
-    return HttpResponse("Hello, world.")

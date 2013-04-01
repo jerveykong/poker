@@ -1,14 +1,11 @@
-from poker.models import User
+from poker.models.user import User
 
 class Lobby:
-#    users=[];
+    users=[];
 #    tables=[];
     def __init__(self):
-#        self.users = [];
-        self.users = {'username':'foo', 'username':'bar'};
-        self.tables = [];
-        print 'are we __init__ing?';
+        self.users = [{'username':'foo'}, {'username':'bar'}]
     def loadLobby(self):
-        self.users = User.objects.all();
+        self.users = User.objects.all()
     def getUsers(self):
-        return self.users;
+        return self.users
