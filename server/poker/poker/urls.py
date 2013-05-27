@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, url
-
 from poker import views
 
 urlpatterns = patterns('',
