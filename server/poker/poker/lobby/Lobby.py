@@ -4,7 +4,6 @@ from poker.models.table import Table
 class Lobby:
     users   = [];
     tables  = [];
-    def __init__(self):
     def loadLobby(self):
         self.users  = User.objects.all()
         self.tables = Table.objects.all()

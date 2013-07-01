@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
+LOGGING_ROOT = '/tmp'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -140,17 +141,49 @@ LOGGING = {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
+    'formatters':{
+        'standard': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'log_file': {
+            'level':'INFO',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': LOGGING_ROOT + "/poker.errorlog",
+            'maxBytes': 50000,
+            'backupCount': 2,
+            'formatter': 'standard',
+        },
+        'trace_log_file': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': LOGGING_ROOT + "/poker.tracelog",
+            'maxBytes': 50000,
+            'backupCount': 2,
+            'formatter': 'standard',
         }
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
+            'propagate': True,
+        },
+        'poker.error': {
+            'handlers': ['log_file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'poker.trace': {
+            'handlers': ['trace_log_file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     }

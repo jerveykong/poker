@@ -3,9 +3,7 @@ import json
 from django.core import serializers
 from django.http import HttpResponse
 from django.template import Context, loader
-
 from poker.lobby.Lobby import Lobby
-
 
 def index(request):
     lobby = Lobby()
