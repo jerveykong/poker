@@ -8,7 +8,7 @@ try:
         username = sys.argv[1]
 except IndexError:
     username = 'user'
-
+username = ''
 try:
     if len(sys.argv[2]) > 0:
         ip = sys.argv[2]

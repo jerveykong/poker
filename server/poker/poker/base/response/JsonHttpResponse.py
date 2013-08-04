@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 import json
 
+from poker.base.common.ErrorCodes import ResponseErrorCode
+
 # Base Json HTTP Response
 class JsonHttpResponse(HttpResponse):
     def __init__(self, response):
@@ -14,7 +16,7 @@ class JsonHttpSuccessResponse(JsonHttpResponse):
         return JsonHttpResponse.__init__(self, jsonResponse)
 
 # Invalid Method Json HTTP Response
-class JsonHttpInvalidMethod(JsonHttpResponse):
-    def __init__(self):
-        jsonResponse = {"result" : False, "errorNo": 1000, "error": "Invalid Request"}
+class JsonHttpInvalidRequest(JsonHttpResponse):
+    def __init__(self, message):
+        jsonResponse = {"result" : False, "errorNo": ResponseErrorCode.INVALID_REQUEST, "error": "Invalid Request", "errorMessage": message}
         return JsonHttpResponse.__init__(self, jsonResponse)

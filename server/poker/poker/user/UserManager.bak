@@ -1,7 +1,12 @@
 from poker.models.user import User
+from django.core import serializers
+import json
 
 class UserManager:
     def addUser(self, body):
         user = User()
         user.username = body['username']
         user.save()
+    def getUser(self, userId):
+        user = User.objects.get(pk = userId)
+        return user
