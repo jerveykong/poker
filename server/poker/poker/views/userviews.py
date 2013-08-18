@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from poker.base.common.Common import *
 from poker.controllers.user import UserController
 from poker.models.user import User
+from pprint import pprint
 
 @csrf_exempt
 def index(request):
@@ -11,8 +12,8 @@ def index(request):
         userController = UserController()
 
         if( request.method == 'PUT' ):
+            #print pprint(request.META['HTTP_AUTHORIZATION'])
             body = json.loads(request.read())
-
             userController.addUser(body)
             response = {"success": "User has been added"}
             traceMessage = "Adding user success"
